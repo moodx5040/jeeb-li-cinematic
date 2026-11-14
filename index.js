@@ -1,0 +1,4 @@
+const menuBtn=document.querySelector('#menuBtn'),nav=document.querySelector('#navLinks');menuBtn?.addEventListener('click',()=>nav.classList.toggle('open'));
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.13});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+// Tilt بسيط للبطاقات على الكمبيوتر فقط
+if(matchMedia('(hover:hover)').matches){document.querySelectorAll('.tilt').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(900px) rotateY(${x*7}deg) rotateX(${-y*7}deg) translateY(-4px)`});card.addEventListener('mouseleave',()=>card.style.transform='')})}
